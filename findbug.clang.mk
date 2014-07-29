@@ -2,7 +2,7 @@ WC := $(shell pwd)
 
 .PHONY: scan-build pre-build bitcoin 
 scan-build:pre-build bitcoin
-	cd $(WC)/bitcoin && scan-build -o $(WC)/obj-bitcoin make
+	cd $(WC)/bitcoin && scan-build -o $(WC)/obj-bitcoin  -k -V make
 
 pre-build:
 	mkdir -p $(WC)/obj-bitcoin
