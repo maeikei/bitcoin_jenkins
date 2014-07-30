@@ -103,7 +103,7 @@ SCAN_CHECKER += -enable-checker += -enable-checker unix.cstring.NullArg
 
 .PHONY: scan-build pre-build bitcoin 
 scan-build:pre-build bitcoin
-	cd $(WC)/bitcoin && scan-build -o $(WC)/obj-bitcoin  -stats -k -V $(SCAN_CHECKER) make
+	cd $(WC)/bitcoin && scan-build -o $(WC)/obj-bitcoin  -stats -k $(SCAN_CHECKER) make
 
 pre-build:
 	mkdir -p $(WC)/obj-bitcoin
