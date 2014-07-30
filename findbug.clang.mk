@@ -100,17 +100,19 @@ SCAN_CHECKER += -enable-checker unix.cstring.NullArg
 
 
 
+REPORTS_DIR := $(WC)/reports
+TARGET      := bitcoin
 
-.PHONY: scan-build pre-build bitcoin 
-scan-build:pre-build bitcoin
-	cd $(WC)/bitcoin && scan-build -o $(WC)/obj-bitcoin  -stats -k $(SCAN_CHECKER) make
+.PHONY: scan-build pre-build $(TARGET) 
+scan-build:pre-build $(TARGET)
+	cd $(WC)/$(TARGET) && scan-build -o $(REPORTS_DIR) -stats -k $(SCAN_CHECKER) make
 
 pre-build:
-	mkdir -p $(WC)/reports
+	mkdir -p $(REPORTS_DIR)
 	
-bitcoin:
-	cd $(WC)/bitcoin && ./autogen.sh
-	cd $(WC)/bitcoin && ./configure CC=clang CXX=clang++ --with-incompatible-bdb \
+$(TARGET):
+	cd $(WC)/$(TARGET) && ./autogen.sh
+	cd $(WC)/$(TARGET) && ./configure CC=clang CXX=clang++ --with-incompatible-bdb \
 	--with-boost-libdir=/usr/lib/arm-linux-gnueabihf\
 	
 	
