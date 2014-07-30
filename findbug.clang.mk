@@ -106,7 +106,7 @@ scan-build:pre-build bitcoin
 	cd $(WC)/bitcoin && scan-build -o $(WC)/obj-bitcoin  -stats -k $(SCAN_CHECKER) make
 
 pre-build:
-	mkdir -p $(WC)/obj-bitcoin
+	mkdir -p $(WC)/reports
 	
 bitcoin:
 	cd $(WC)/bitcoin && ./autogen.sh
