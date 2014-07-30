@@ -10,7 +10,7 @@ TARGET      := bitcoin
 
 .PHONY: scan-build pre-build $(TARGET) 
 scan-build:pre-build $(TARGET)
-	cd $(WC)/$(TARGET) && scan-build -o $(REPORTS_DIR) -stat -k $(SCAN_CHECKER) make
+	cd $(WC)/$(TARGET) && scan-build -o $(REPORTS_DIR) -stats -k $(SCAN_CHECKER) make
 
 pre-build:
 	mkdir -p $(REPORTS_DIR)
