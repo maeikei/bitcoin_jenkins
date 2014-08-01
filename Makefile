@@ -14,13 +14,13 @@ scan-build:pre-build $(TARGET)
 	-o $(REPORTS_DIR) -stats -k $(SCAN_CHECKER) make
 	make post-build
 
-pre-build:
+pre-build:timeout.monitor
 	mkdir -p $(REPORTS_DIR)
 timeout.monitor:
 	rm -rf $(WC)/task.runing
 	touch $(WC)/task.runing
 	chmod +x $(WC)/timeout.monitor
-	$(WC)/timeout.monitor
+	$(WC)/timeout.monitor &
 	
 post-build:
 	rm -rf $(WC)/task.runing
