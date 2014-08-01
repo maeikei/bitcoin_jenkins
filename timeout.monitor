@@ -2,9 +2,20 @@
 
 while (1) {
   $clang_result = `top -n 1 | grep clang | grep findbugs`;
-  print $clang_result;
+  if(not $clang_result eq "")
+  {
+    print $clang_result;
+    $clang_result =~ /(\d+):\d\d.\d\d/;
+    print "time = $1 \n";
+    if($1 gt 10 ) {
+      $clang_result =~ /(\d+) findbugs /;
+      print"kill over time process id = $1 \n";
+      kill 9,$1;
+    }
+  }
   my $foo = 'task.runing';
-  if (! -f $foo) {
+  if (not -f $foo) {
     break;
   }
+  sleep 10;
 }
