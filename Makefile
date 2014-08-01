@@ -17,7 +17,7 @@ pre-build:
 	
 $(TARGET):
 	cd $(WC)/$(TARGET) && ./autogen.sh
-	cd $(WC)/$(TARGET) && ./configure CC="timeout 300 -k clang" CXX="timeout 300 -k clang++" --with-incompatible-bdb \
+	cd $(WC)/$(TARGET) && ./configure CC="timeout 120 -k clang" CXX="timeout 120 -k clang++" --with-incompatible-bdb \
 	--with-boost-libdir=/usr/lib/arm-linux-gnueabihf\
 	
 	
