@@ -11,8 +11,8 @@ TARGET      := bitcoin
 .PHONY: scan-build pre-build $(TARGET) 
 scan-build:pre-build $(TARGET)
 	cd $(WC)/$(TARGET) && scan-build \
-	--use-cc="timeout 300 clang" \
-	--use-c++="timeout 300 clang++" \
+	--use-cc=timeout 300 clang \
+	--use-c++=timeout 300 clang++ \
 	-o $(REPORTS_DIR) -stats -k $(SCAN_CHECKER) make
 
 pre-build:
