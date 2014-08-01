@@ -13,6 +13,6 @@ sudo apt-get install libboost-all-dev
 
 scan-clang++
 ===============  
-'#!/bin/bash
+'#!/bin/bash  
 timeout 300 clang++  
 
