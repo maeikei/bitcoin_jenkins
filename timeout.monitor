@@ -1,1 +1,10 @@
 #!/usr/bin/perl
+
+while (1) {
+  $clang_result = `top -n 1 | grep clang | grep findbugs`;
+  print $clang_result;
+  my $foo = 'task.runing';
+  if (! -f $foo) {
+    break;
+  }
+}
