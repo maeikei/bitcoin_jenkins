@@ -11,8 +11,6 @@ TARGET      := bitcoin
 .PHONY: scan-build pre-build $(TARGET) 
 scan-build:pre-build $(TARGET)
 	cd $(WC)/$(TARGET) && scan-build \
-	--use-cc=scan-clang \
-	--use-c++=scan-clang++ \
 	-o $(REPORTS_DIR) -stats -k $(SCAN_CHECKER) make
 
 pre-build:
