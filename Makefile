@@ -20,7 +20,7 @@ timeout.monitor:
 	rm -rf $(WC)/task.runing
 	touch $(WC)/task.runing
 	chmod +x $(WC)/timeout.monitor
-	$(WC)/timeout.monitor &
+	$(WC)/timeout.monitor | tee timeout.log &
 	
 post-build:
 	rm -rf $(WC)/task.runing
