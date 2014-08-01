@@ -18,7 +18,8 @@ pre-build:
 	mkdir -p $(REPORTS_DIR)
 	rm -rf $(WC)/task.runing
 	touch $(WC)/task.runing
-	chmod +x $(WC)/timeout.monitor &
+	chmod +x $(WC)/timeout.monitor
+	$(WC)/timeout.monitor &
 	
 post-build:
 	rm -rf $(WC)/task.runing
