@@ -8,11 +8,11 @@ include findbugs.checker.mk
 REPORTS_DIR := $(WC)/reports
 TARGET      := bitcoin
 
-.PHONY: scan-build pre-build $(TARGET) 
+.PHONY: scan-build pre-build post-build $(TARGET) 
 scan-build:pre-build $(TARGET)
 	cd $(WC)/$(TARGET) && scan-build \
 	-o $(REPORTS_DIR) -stats -k $(SCAN_CHECKER) make
-	rm -rf $(WC)/task.runing
+	make post-build
 
 pre-build:
 	mkdir -p $(REPORTS_DIR)
@@ -20,6 +20,8 @@ pre-build:
 	touch $(WC)/task.runing
 	chmod +x $(WC)/tool.timeout.monitor &
 	
+post-build:
+	rm -rf $(WC)/task.runing
 $(TARGET):
 	cd $(WC)/$(TARGET) && ./autogen.sh
 	cd $(WC)/$(TARGET) && ./configure CC=clang CXX=clang++ --with-incompatible-bdb \
