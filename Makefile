@@ -12,9 +12,13 @@ TARGET      := bitcoin
 scan-build:pre-build $(TARGET)
 	cd $(WC)/$(TARGET) && scan-build \
 	-o $(REPORTS_DIR) -stats -k $(SCAN_CHECKER) make
+	rm -rf $(WC)/task.runing
 
 pre-build:
 	mkdir -p $(REPORTS_DIR)
+	rm -rf $(WC)/task.runing
+	touch $(WC)/task.runing
+	chmod +x $(WC)/tool.timeout.monitor &
 	
 $(TARGET):
 	cd $(WC)/$(TARGET) && ./autogen.sh
