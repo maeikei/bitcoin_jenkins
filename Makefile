@@ -27,6 +27,9 @@ post-build:
 $(TARGET):
 	cd $(WC)/$(TARGET) && ./autogen.sh
 	cd $(WC)/$(TARGET) && ./configure CC=clang CXX=clang++ --with-incompatible-bdb \
-	--with-boost-libdir=/usr/lib/arm-linux-gnueabihf\
+	
+	
+	
+	#--with-boost-libdir=/usr/lib/arm-linux-gnueabihf\
 	
 	
