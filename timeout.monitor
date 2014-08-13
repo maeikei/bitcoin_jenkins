@@ -1,20 +1,25 @@
 #!/usr/bin/perl
 
 while (1) {
-  $clang_result = `top -n 1 | grep clang | grep findbugs`;
-  if(not $clang_result eq "")
+  #$clang_result = `top -n 1 | grep clang | grep findbugs`;
+  open(TOP,"top -n 1 | grep clang | grep findbugs") || die "top failed: $!\n";
+  while ( <TOP> )
   {
-    print $clang_result;
-    $clang_result =~ /(\d+):\d\d.\d\d/;
-    print "time = $1 \n";
-    if($1 gt 10 ) {
-      $clang_result =~ /(\d+) findbugs /;
-      print"kill over time process id = $1 \n";
-      kill 9,$1;
-    }
+    print TOP
   }
-  my $foo = 'task.runing';
-  if (not -f $foo) {
+  #if(not $clang_result eq "")
+  #{
+  #  print $clang_result;
+  #  $clang_result =~ /(\d+):\d\d.\d\d/;
+  #  print "time = $1 \n";
+  #  if($1 gt 10 ) {
+  #    $clang_result =~ /(\d+) findbugs /;
+  #    print"kill over time process id = $1 \n";
+  #    kill 9,$1;
+  #  }
+  #}
+  my $task = 'task.runing';
+  if (not -f $task) {
     break;
   }
   sleep 10;
