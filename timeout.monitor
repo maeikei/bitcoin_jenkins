@@ -8,7 +8,7 @@ while (1) {
     $clang_result =~ /(\d+):\d\d.\d\d/;
 	$time = $1;
     print "time = $time \n";
-    if($time gt 10 ) {
+    if($time > 10 ) {
       $clang_result =~ /(\d+) findbugs /;
 	  $id = $1;
       print"kill over time process id = $id \n";
