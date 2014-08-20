@@ -19,9 +19,8 @@ pre-build:timeout.monitor
 timeout.monitor:
 	rm -rf $(WC)/task.runing
 	touch $(WC)/task.runing
-	make -C timeout.monitor
-	chmod +x $(WC)/timeout.monitor/timeout.monitor
-	$(WC)/timeout.monitor/timeout.monitor | tee timeout.log &
+	chmod +x $(WC)/timeout.monitor
+	$(WC)/timeout.monitor | tee timeout.monitor.log &
 	
 post-build:
 	rm -rf $(WC)/task.runing
