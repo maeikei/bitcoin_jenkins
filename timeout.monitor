@@ -2,7 +2,7 @@
 
 while (1) {
   #$clang_result = `top -n 1 | grep clang | grep findbugs`;
-  open(TOP,"top -n 1 | grep clang | grep findbugs") || die "top failed: $!\n";
+  open(TOP,"top -n 1 | grep clang | grep findbugs |") || die "top failed: $!\n";
   while ( <TOP> )
   {
     print TOP
