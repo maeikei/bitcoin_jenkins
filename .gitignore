@@ -19,3 +19,8 @@
 *.exe
 *.out
 *.app
+
+# add custermize.
+task.runing
+timeout.log
+timeout.monitor/timeout.monitor
