@@ -6,11 +6,13 @@ while (1) {
   {
     print $clang_result;
     $clang_result =~ /(\d+):\d\d.\d\d/;
-    print "time = $1 \n";
-    if($1 gt 10 ) {
+	$time = $1;
+    print "time = $time \n";
+    if($time gt 10 ) {
       $clang_result =~ /(\d+) findbugs /;
-      print"kill over time process id = $1 \n";
-      kill 9,$1;
+	  $id = $1;
+      print"kill over time process id = $id \n";
+      kill 9,$id;
     }
   }
   my $task = 'task.runing';
