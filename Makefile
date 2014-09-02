@@ -10,8 +10,8 @@ TARGET      := bitcoin
 
 .PHONY: scan-build pre-build post-build timeout.monitor $(TARGET) 
 scan-build:pre-build $(TARGET)
-	cd $(WC)/$(TARGET) && scan-build \
-	-o $(REPORTS_DIR) -stats -k $(SCAN_CHECKER) make
+	cd $(WC)/$(TARGET) \
+	&& scan-build -o $(REPORTS_DIR) -stats -k $(SCAN_CHECKER) make -j4
 	make post-build
 
 pre-build:timeout.monitor
